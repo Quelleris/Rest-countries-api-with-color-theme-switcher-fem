@@ -38,6 +38,11 @@ button {
 a {
     text-decoration: none;
     font: inherit;
+    color: inherit;
+}
+
+.fw-regular {
+    font-weight: var(--fw-regular);
 }
 
 body {
@@ -89,6 +94,10 @@ body.dark {
 .country-info-section .container {
     width: 80%;
     margin-inline: auto;
+}
+
+.country-component-image {
+    aspect-ratio: 1.5 / 1;
 }
 
 h1 {
