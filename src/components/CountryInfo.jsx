@@ -1,23 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, Link } from 'react-router-dom'
-import countries from '../assets/data.json'
 
 export default function CountryInfo() {
-
-  // kolejny useEffect z fetch API, ale tylko ten 1 potrzebny kraj.
+  const [countryInfo, setCountryInfo] = useState([]);
   const { countryName } = useParams();
-  const country = countries.find(country => country.name === countryName);
-  console.log(countryName)
+
+  useEffect(() => {
+    fetch(`https://restcountries.com/v3.1/name/${countryName}`)
+    .then(response => response.json())
+    .then(dataRaw => setCountryInfo(dataRaw))
+  }, [])
 
   return (
-    <section className="country-info-section">
+     <section className="country-info-section">
       <div className="container">
         <Link to="/" className="back-btn">
           <span>Back</span>
         </Link>
-        <div className="country-info">
-          <img src={country.flags.png} alt={country.name} />
-          <h2 className="country-info-title">{country.name}</h2>
+        {countryInfo.map(country => 
+           <div className="country-info" key={country.name.common}>
+          <img src={country.flags.png} alt={country.name.common} />
+          <h2 className="country-info-title">{country.name.common}</h2>
           <ul className="country-info-list">
             <li className="country-info-item">
               Native Name: {country.nativeName}
@@ -39,14 +42,14 @@ export default function CountryInfo() {
             <li className="country-info-item">
               Top Level Domain: {country.topLevelDomain}
             </li>
-            <li className="country-info-item">
+            {/* <li className="country-info-item">
               Currencies: {country.currencies ?country.currencies[0].name : 'none'}
             </li>
             <li className="country-info-item">
               Languages: {country.languages.map((language) => {
                 return `${language.name}, `
               })}
-            </li>
+            </li> */}
           </ul>
           <ul className="country-info-border-list">
             <li className="country-info-border-title">
@@ -54,6 +57,7 @@ export default function CountryInfo() {
             </li>
           </ul>
         </div>
+        )}
       </div>
     </section>
   )
