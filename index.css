@@ -35,6 +35,17 @@ button {
     cursor: pointer;
 }
 
+input {
+    width: 100%;
+    outline: transparent;
+    border: none;
+}
+
+select {
+    border: none;
+    font: inherit;
+}
+
 a {
     text-decoration: none;
     font: inherit;
@@ -69,7 +80,7 @@ body.dark {
 }
 
 .header {
-    padding-block: 60px;
+    padding-block: 40px;
     background-color: var(--element-color);
     transition: var(--transition-delay);
 }
@@ -96,8 +107,61 @@ body.dark {
     margin-inline: auto;
 }
 
+.filter-section {
+    margin-block: 40px;
+}
+
+.filter-section .container {
+    width: 90%;
+    margin-inline: auto;
+}
+
 .country-component-image {
     aspect-ratio: 1.5 / 1;
+}
+
+.input-wrapper {
+    position: relative;
+}
+
+.search-icon {
+    position: absolute;
+    top: 40%;
+    left: 20px;
+}
+
+.filter-component {
+    background-color: var(--element-color);
+    padding-block: 26px;
+    padding-inline: 45px;
+    border-radius: 0.5rem;
+    color: var(--text-color);
+    font-size: 1rem;
+}
+
+.country-filter-input {
+    margin-bottom: 62px;
+}
+
+.back-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: fit-content;
+    font-size: 18px;
+    background-color: var(--element-color);
+    border: 1px solid var(--background-color);
+    color: var(--text-color);
+    padding: 10px 40px;
+}
+
+.country-info-list {
+    margin-bottom: 70px;
+}
+
+.country-info-item {
+    margin-bottom: 22px;
 }
 
 h1 {
@@ -132,22 +196,15 @@ ul {
 }
 
 .country-info-section {
-    margin-block: 80px;
+    margin-block: 60px;
 }
 
 .country-info-item {
     font-size: 20px;
 }
 
-.back-btn {
-    background-color: var(--element-color);
-    border: 1px solid var(--background-color);
-    color: var(--text-color);
-    padding: 6px 20px;
-}
-
 .country-info {
-    margin-top: 125px;
+    margin-top: 100px;
 }
 
 .country-info > img {
@@ -177,5 +234,21 @@ ul {
 @media (min-width: 1200px) {
     .grid-container {
         grid-template-columns: repeat(3, 1fr);
+    }
+
+    .country-info {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 120px;
+    }
+
+    .country-info-section .container,
+    .header .container {
+        width: 90%;
+        margin-inline: auto;
+    }
+
+    .country-info-section .grid-container {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
