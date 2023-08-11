@@ -6,8 +6,8 @@ export default function Filters({onNameSearch, onRegionSearch}) {
     <div className="filter-section">
       <div className="container">
         <div className="input-wrapper">
-        <input onChange={e => onNameSearch(e.target.value)} type="search" className='country-filter-input filter-component' placeholder='Search for a country...'/>
-        <FaSearch className='search-icon'/>
+          <input onChange={e => onNameSearch(e.target.value)} type="search" className='country-filter-input filter-component' placeholder='Search for a country...'/>
+          <FaSearch className='search-icon'/>
         </div>
         <div className="select-wrapper">
           <label htmlFor="region-select"></label>
