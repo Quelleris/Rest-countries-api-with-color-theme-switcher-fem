@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
 import { BsArrowLeft } from "react-icons/bs";
 
+function getNativeName(country) {
+	return country.name.nativeName[Object.keys(country.name.nativeName)].common;
+}
+
 export default function CountryInfo() {
 	const [countryInfo, setCountryInfo] = useState([]);
 	const { countryName } = useParams();
@@ -13,8 +17,6 @@ export default function CountryInfo() {
 			.then((response) => response.json())
 			.then((dataRaw) => setCountryInfo(dataRaw));
 	}, []);
-
-	console.log(countryInfo[0].name.nativeName.fra.common);
 
 	return (
 		<section className='country-info-section'>
@@ -37,7 +39,7 @@ export default function CountryInfo() {
 							<div className='grid-container'>
 								<ul className='country-info-list'>
 									<li className='country-info-item'>
-										{/* Native Name: {country.name.nativeName} */}
+										Native Name: {getNativeName(country)}
 									</li>
 									<li className='country-info-item'>
 										Population:{" "}
